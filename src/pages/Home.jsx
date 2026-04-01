@@ -292,15 +292,6 @@ export default function Home() {
     { name: "Ladakh Adventure", days: "8N/9D", price: "₹32,999", image: "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?w=600", highlights: "Pangong Lake · Nubra · Bike Trip", badge: "Thrill" },
   ];
 
-  const galleryImages = [
-    { url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400", title: "Mountain View" },
-    { url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400", title: "Himalayan Peak" },
-    { url: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400", title: "Beach Paradise" },
-    { url: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400", title: "Bali Rice Fields" },
-    { url: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=400", title: "Rajasthan Fort" },
-    { url: "https://images.unsplash.com/photo-1574914629385-46448b0aecd6?w=400", title: "Ladakh Lake" },
-  ];
-
   const features = [
     { Icon: CompassIcon, title: "Expert Travel Guides", desc: "Awesome tips and local hacks for an unforgettable trip!" },
     { Icon: EditIcon, title: "Customizable Itineraries", desc: "Turn your trip into your very own adventure!" },

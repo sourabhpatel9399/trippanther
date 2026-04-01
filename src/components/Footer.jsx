@@ -54,12 +54,13 @@ const LinkedInIcon = () => (
   </svg>
 );
 
+// href: null means no link yet → renders as button
 const SOCIAL_LINKS = [
   { Icon: FacebookIcon, label: "Facebook", href: "https://www.facebook.com/share/1AwagDGqJH/", hoverColor: "hover:bg-blue-600" },
   { Icon: InstagramIcon, label: "Instagram", href: "https://www.instagram.com/trippanther_?igsh=cWVjNWhzcXFmdHg0", hoverColor: "hover:bg-pink-600" },
-  { Icon: TwitterIcon, label: "Twitter / X", href: "#", hoverColor: "hover:bg-sky-500" },
-  { Icon: YouTubeIcon, label: "YouTube", href: "#", hoverColor: "hover:bg-red-600" },
-  { Icon: LinkedInIcon, label: "LinkedIn", href: "#", hoverColor: "hover:bg-blue-700" },
+  { Icon: TwitterIcon, label: "Twitter / X", href: null, hoverColor: "hover:bg-sky-500" },
+  { Icon: YouTubeIcon, label: "YouTube", href: null, hoverColor: "hover:bg-red-600" },
+  { Icon: LinkedInIcon, label: "LinkedIn", href: null, hoverColor: "hover:bg-blue-700" },
 ];
 
 export default function Footer() {
@@ -68,7 +69,6 @@ export default function Footer() {
   const animationRef = useRef(null);
 
   useEffect(() => {
-    // Animated gradient movement
     if (glowRef.current) {
       animationRef.current = gsap.to(glowRef.current, {
         duration: 8,
@@ -80,35 +80,21 @@ export default function Footer() {
       });
     }
 
-    // Social icons hover 3D effect
     const socialIcons = document.querySelectorAll(".social-icon");
     const handleMouseEnter = (icon) => {
-      gsap.to(icon, {
-        scale: 1.2,
-        rotationY: 360,
-        duration: 0.6,
-        ease: "back.out(1.2)",
-      });
+      gsap.to(icon, { scale: 1.2, rotationY: 360, duration: 0.6, ease: "back.out(1.2)" });
     };
     const handleMouseLeave = (icon) => {
-      gsap.to(icon, {
-        scale: 1,
-        rotationY: 0,
-        duration: 0.4,
-        ease: "power2.out",
-      });
+      gsap.to(icon, { scale: 1, rotationY: 0, duration: 0.4, ease: "power2.out" });
     };
-    
+
     socialIcons.forEach((icon) => {
       icon.addEventListener("mouseenter", () => handleMouseEnter(icon));
       icon.addEventListener("mouseleave", () => handleMouseLeave(icon));
     });
 
-    // Cleanup on unmount
     return () => {
-      if (animationRef.current) {
-        animationRef.current.kill();
-      }
+      if (animationRef.current) animationRef.current.kill();
       socialIcons.forEach((icon) => {
         icon.removeEventListener("mouseenter", () => handleMouseEnter(icon));
         icon.removeEventListener("mouseleave", () => handleMouseLeave(icon));
@@ -116,6 +102,9 @@ export default function Footer() {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
+
+  const socialIconClass = (hoverColor) =>
+    `social-icon w-10 h-10 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-transparent ${hoverColor} text-gray-300 hover:text-white`;
 
   return (
     <footer
@@ -133,9 +122,8 @@ export default function Footer() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent animate-pulse" />
 
       <div className="container-custom relative z-10">
-        {/* Main Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-white/10">
-          
+
           {/* Brand Section */}
           <div className="footer-brand sm:col-span-2 lg:col-span-4">
             <div className="mb-5">
@@ -149,21 +137,32 @@ export default function Footer() {
               for the bold and curious. Your journey, our passion.
             </p>
 
-            {/* Social Icons */}
+            {/* Social Icons — a tag for real links, button for placeholders */}
             <div className="flex flex-wrap gap-3">
-              {SOCIAL_LINKS.map(({ Icon, label, href, hoverColor }, i) => (
-                <a
-                  key={i}
-                  href={href}
-                  aria-label={label}
-                  title={label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`social-icon w-10 h-10 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-transparent ${hoverColor} text-gray-300 hover:text-white`}
-                >
-                  <Icon />
-                </a>
-              ))}
+              {SOCIAL_LINKS.map(({ Icon, label, href, hoverColor }, i) =>
+                href ? (
+                  <a
+                    key={i}
+                    href={href}
+                    aria-label={label}
+                    title={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={socialIconClass(hoverColor)}
+                  >
+                    <Icon />
+                  </a>
+                ) : (
+                  <button
+                    key={i}
+                    aria-label={label}
+                    title={label}
+                    className={socialIconClass(hoverColor)}
+                  >
+                    <Icon />
+                  </button>
+                )
+              )}
             </div>
           </div>
 
@@ -217,7 +216,6 @@ export default function Footer() {
               Connect With Us
             </h3>
 
-            {/* Contact Info */}
             <div className="space-y-4 mb-6">
               {[
                 {
@@ -290,9 +288,12 @@ export default function Footer() {
           </p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service", "Refund Policy"].map((item, i) => (
-              <a key={i} href="#" className="text-gray-500 text-xs transition-all duration-300 hover:text-blue-400">
+              <button
+                key={i}
+                className="text-gray-500 text-xs transition-all duration-300 hover:text-blue-400"
+              >
                 {item}
-              </a>
+              </button>
             ))}
           </div>
         </div>

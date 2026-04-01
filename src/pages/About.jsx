@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -80,7 +79,6 @@ export default function About() {
   const cursorRef = useRef(null);
   const cursorDotRef = useRef(null);
   const ctaBtn = useMagnetic(0.5);
-  const storyBtn = useMagnetic(0.5);
 
   // ─── Custom Cursor ─────────────────────────────────────────────────────
   useEffect(() => {
@@ -117,15 +115,6 @@ export default function About() {
         { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: "back.out(1.5)" }, "-=0.5");
 
     // Mouse parallax — 3 layers
-    const handleMouse = (e) => {
-      const xP = e.clientX / window.innerWidth - 0.5;
-      const yP = e.clientY / window.innerHeight - 0.5;
-      gsap.to(".parallax-layer-1", { x: xP * 45, y: yP * 45, duration: 1.2, ease: "power2.out" });
-      gsap.to(".parallax-layer-2", { x: xP * 22, y: yP * 22, duration: 1.2, ease: "power2.out" });
-      gsap.to(".parallax-layer-3", { x: xP * 9, y: yP * 9, duration: 1.2, ease: "power2.out" });
-      gsap.to(".hero-content-layer", { x: xP * 14, y: yP * 12, duration: 1.2, ease: "power2.out" });
-      gsap.to(".hero-float-badge", { x: xP * 32, y: yP * 28, duration: 1.2, ease: "power2.out" });
-    };
     // window.addEventListener("mousemove", handleMouse);
 
     // BG scroll parallax
