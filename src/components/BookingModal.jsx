@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { gsap } from 'gsap';
 
-const WA = '9192435 85890';
+const WA = '919243585890'; // Remove space from number
 
 // ========== PREMIUM SVG ICONS ==========
 const CloseIcon = () => (
@@ -117,10 +117,29 @@ export default function BookingModal() {
 
   const set = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
+  // ✅ WhatsApp Fix - Works on iOS and Android both
   const submit = e => {
     e.preventDefault();
     const msg = `🐆 *TripPanther Booking*\n\n👤 *Name:* ${form.name}\n📧 *Email:* ${form.email}\n📞 *Phone:* ${form.phone}\n🌍 *Destination:* ${form.destination}\n📅 *Date:* ${form.date}\n👥 *People:* ${form.people}\n💬 *Message:* ${form.message || 'N/A'}\n\n_Sent via TripPanther.com_`;
-    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
+    
+    const phoneNumber = WA.replace(/\s/g, ''); // Remove spaces
+    const encodedMsg = encodeURIComponent(msg);
+    
+    // Check if iOS (iPhone/iPad/iPod)
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    
+    if (isIOS) {
+      // iPhone: Try WhatsApp App first
+      window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodedMsg}`;
+      
+      // Fallback: If app not installed, open web version
+      setTimeout(() => {
+        window.open(`https://wa.me/${phoneNumber}?text=${encodedMsg}`, '_blank');
+      }, 500);
+    } else {
+      // Android & Others: Direct web version (works everywhere)
+      window.open(`https://wa.me/${phoneNumber}?text=${encodedMsg}`, '_blank');
+    }
     
     gsap.to(contentRef.current, { scale: 0.98, duration: 0.2, yoyo: true, repeat: 1 });
     setTimeout(() => {
