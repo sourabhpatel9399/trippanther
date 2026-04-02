@@ -226,6 +226,7 @@ export default function Footer() {
                     </svg>
                   ),
                   text: "MG Road, Indore, MP 452001",
+                  href: "https://www.google.com/maps/search/MG+Road,+Indore,+MP+452001",
                 },
                 {
                   icon: (
@@ -233,7 +234,8 @@ export default function Footer() {
                       <path d="M22 16.92V19a2 2 0 01-2.18 2A19.79 19.79 0 013 4.18 2 2 0 015 2h2.09a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
                     </svg>
                   ),
-                  text: "+91 98765 43210",
+                  text: "+91 92435 85890",
+                  href: "tel:+919243585890",
                 },
                 {
                   icon: (
@@ -242,7 +244,8 @@ export default function Footer() {
                       <polyline points="22,6 12,13 2,6" />
                     </svg>
                   ),
-                  text: "hello@trippanther.com",
+                  text: "infotrippanther@gmail.com",
+                  href: "mailto:infotrippanther@gmail.com",
                 },
                 {
                   icon: (
@@ -252,22 +255,34 @@ export default function Footer() {
                     </svg>
                   ),
                   text: "Mon–Sat · 9AM–8PM",
+                  href: null,
                 },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3 group">
                   <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:text-amber-400 transition-all duration-300 flex-shrink-0">
                     {item.icon}
                   </div>
-                  <span className="text-gray-400 group-hover:text-white text-sm transition-all duration-300 mt-1">
-                    {item.text}
-                  </span>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-white text-sm transition-all duration-300 mt-1"
+                    >
+                      {item.text}
+                    </a>
+                  ) : (
+                    <span className="text-gray-400 group-hover:text-white text-sm transition-all duration-300 mt-1">
+                      {item.text}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
 
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/9192435 85890"
+              href="https://wa.me/919243585890"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl text-white text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group"

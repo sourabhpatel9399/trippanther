@@ -316,7 +316,7 @@ export default function About() {
               </h1>
             </div>
             <p className="hero-desc text-white/65 text-lg md:text-xl max-w-xl leading-relaxed mb-10 opacity-0">
-              Born mid-trek in Spiti Valley, 2016. Two friends, one mission — <span className="text-amber-400 font-medium">to turn travel into transformation.</span>
+              Born mid-trek in Indore, 2024. Two friends, one mission — <span className="text-amber-400 font-medium">to turn travel into transformation.</span>
             </p>
             <div className="flex flex-wrap gap-5">
               <div className="hero-btn-wrap opacity-0">
@@ -382,7 +382,7 @@ export default function About() {
             <div className="story-left">
               <p className="text-amber-400 text-xs tracking-[0.3em] uppercase mb-4">Our Journey</p>
               <h2 className="section-title text-5xl md:text-6xl font-black mb-6" style={{ fontFamily: "'Georgia', serif" }}>
-                From the <em className="not-italic text-transparent" style={{ WebkitTextStroke: "1.5px #F59E0B" }}>Himalayas</em><br />to the World
+                From the <em className="not-italic text-transparent" style={{ WebkitTextStroke: "1.5px #F59E0B" }}>Indore</em><br />to the World
               </h2>
               <div className="draw-line w-24 h-0.5 bg-amber-400/60 mb-8" />
               <p className="text-white/60 text-lg leading-relaxed mb-5">
@@ -408,7 +408,7 @@ export default function About() {
                   alt="Himalayan Trek" className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#070E1A]/80 to-transparent" />
                 <div className="absolute bottom-6 left-6">
-                  <span className="text-xs text-amber-400 tracking-widest uppercase">Spiti Valley, 2016</span>
+                  <span className="text-xs text-amber-400 tracking-widest uppercase">Indore 2024</span>
                   <p className="text-white font-black text-lg mt-1">Where It All Began</p>
                 </div>
               </TiltCard>
@@ -506,6 +506,8 @@ export default function About() {
       {/* ══════════════════════════════════════════════════
           FOUNDERS
       ══════════════════════════════════════════════════ */}
+
+      
       <section className="py-28 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F] to-[#070E1A]" />
         <div className="container-custom relative z-10">
