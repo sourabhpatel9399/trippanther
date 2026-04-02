@@ -683,7 +683,7 @@ export default function Home() {
               </span>
               <div className="absolute inset-0 bg-white/25 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
             </button>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer"
+            <a href="https://wa.me/9192435 85890" target="_blank" rel="noreferrer"
               className="flex items-center gap-3 px-10 py-5 rounded-full border border-green-400/40 text-green-400 hover:bg-green-400/10 text-sm font-bold transition-all duration-300">
               <WhatsAppIcon />
               Chat on WhatsApp

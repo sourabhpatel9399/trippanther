@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { gsap } from 'gsap';
 
-const WA = '919876543210';
+const WA = '9192435 85890';
 
 // ========== PREMIUM SVG ICONS ==========
 const CloseIcon = () => (
