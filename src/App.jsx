@@ -4,7 +4,7 @@ import { AppProvider } from './context/AppContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
-import LoadingScreen from './components/LoadingScreen';
+// import LoadingScreen from './components/LoadingScreen';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -18,11 +18,7 @@ function ScrollToTop() {
 }
 
 function AppContent() {
-  const [loading, setLoading] = useState(true);
-
-  if (loading) {
-    return <LoadingScreen onLoadingComplete={() => setLoading(false)} />;
-  }
+ 
 
   return (
     <div className="relative noise">
