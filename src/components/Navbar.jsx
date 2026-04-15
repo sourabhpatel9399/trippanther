@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { gsap } from 'gsap';
 import LOGO from '../assets/logo_hd.png';
 
 const NAV_LINKS = [
