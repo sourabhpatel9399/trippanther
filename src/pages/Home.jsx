@@ -267,7 +267,7 @@ export default function Home() {
                 <p className="text-white/40 tracking-[4px] text-[10px] md:text-xs uppercase">01 // Bestseller</p>
                 <h3 className="text-4xl md:text-5xl font-['Playfair_Display',serif]">Kasol & Manali</h3>
                 <p className="text-white/60 font-light leading-relaxed text-sm md:text-base">Experience the pristine valleys, riverside camps, and the mystical aura of the Himalayas in absolute luxury.</p>
-                <button className="border-b border-white pb-1 text-[10px] md:text-xs uppercase tracking-widest hover:text-gray-400 transition-colors mt-4 md:mt-0">View Itinerary</button>
+                <button className="border-b border-white pb-1 text-[10px] md:text-xs uppercase tracking-widest hover:text-gray-400 transition-colors mt-4 md:mt-0"onClick={()=>navigate('/packages')}>View Itinerary</button>
               </div>
             </div>
           </div>
